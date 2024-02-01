@@ -129,9 +129,13 @@ app.post('/update-salesforce-records', async (req, res) => {
       const recordId = record.opportunityId; // Replace 'id' with the correct property name in your data
       const updateData = {
         StageName: 'Closed Won - Success',
-        Create_Follow_Up_Opportunity__c: 'Engagement Call'
+        Create_Follow_Up_Opportunity__c: 'Engagement Call',
+        In_Person_or_Virtual__c: record.VirtualInPerson
       };
-
+      
+      const dayField = `Attended_Day_${record.Days}__c`;
+      updateData[dayField] = true; // Assuming the checkbox should be checked
+      
       // Make a PATCH request to update the record
       const sfUpdateUrl = `https://unblindedmastery.my.salesforce.com/services/data/v58.0/sobjects/Opportunity/${recordId}`;
       await axios.patch(sfUpdateUrl, updateData, {
