@@ -92,7 +92,7 @@ app.get('/salesforce-data', async (req, res) => {
     const selectedEvent = req.query.eventId;
     
     // Step 2: Make a GET request to Salesforce API
-    const query = `SELECT Name, Client_Mobile__c, Client_Email__c, Outstanding_Event_Balance__c FROM Opportunity WHERE Live_Immersion__c = '${selectedEvent}'`;
+    const query = `SELECT Name, Client_Mobile__c, Client_Email__c, Outstanding_Event_Balance__c, Program__c FROM Opportunity WHERE Live_Immersion__c = '${selectedEvent}'`;
     const sfApiUrl = `https://unblindedmastery.my.salesforce.com/services/data/v58.0/query/?q=${encodeURIComponent(query)}`;
 
     const sfApiResponse = await axios.get(sfApiUrl, {
