@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 let selectedRecords = [];
 
 const salesforceCredentials = {
-  client_id: '3MVG9p1Q1BCe9GmBa.vd3k6U6tisbR1DMPjMzaiBN7xn.uqsguNxOYdop1n5P_GB1yHs3gzBQwezqI6q37bh9', // Replace with your Salesforce Consumer Key
-  client_secret: '1AAD66E5E5BF9A0F6FCAA681ED6720A797AC038BC6483379D55C192C1DC93190', // Replace with your Salesforce Consumer Secret
+  client_id: process.env.clientId, // Replace with your Salesforce Consumer Key
+  client_secret: process.env.clientSecret, // Replace with your Salesforce Consumer Secret
   username: 'admin@unblindedmastery.com', // Your Salesforce username
   password: process.env.PASSWORD // Concatenate your password and security token
 };
